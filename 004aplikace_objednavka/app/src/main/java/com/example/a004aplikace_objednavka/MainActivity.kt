@@ -1,6 +1,7 @@
 package com.example.a004aplikace_objednavka
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,6 +20,10 @@ class MainActivity : AppCompatActivity() {
     private val priceOlives = 10
     private val pricePeppers = 20
     private val priceHam = 10
+
+    // Dosud přidané řádky objednávky a jejich celková cena
+    private val orderLines = mutableListOf<String>()
+    private var orderTotal = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +50,11 @@ class MainActivity : AppCompatActivity() {
             binding.ivPizza.setImageResource(image)
         }
 
-        binding.btnOrder.setOnClickListener { showSummary() }
+        binding.btnAdd.setOnClickListener { addToSummary() }
+        binding.btnReset.setOnClickListener { resetOrder() }
+        binding.btnOrder.setOnClickListener {
+            Toast.makeText(this, R.string.order_confirmed, Toast.LENGTH_SHORT).show()
+        }
     }
 
     // Popisky možností včetně cen
@@ -59,8 +68,8 @@ class MainActivity : AppCompatActivity() {
         binding.cbHam.text = getString(R.string.label_extra_price, getString(R.string.extra_ham), priceHam)
     }
 
-    // Výpis objednávky: položky pod sebou s cenou a na konci celková cena
-    private fun showSummary() {
+    // Přidá vybranou pizzu a přísady do souhrnu (původní řádky zůstávají) a přepočítá celkovou cenu
+    private fun addToSummary() {
         val (pizzaName, pizzaPrice) = when (binding.rgPizza.checkedRadioButtonId) {
             R.id.rbPepperoni -> getString(R.string.pizza_pepperoni) to pricePepperoni
             R.id.rbProsciutto -> getString(R.string.pizza_prosciutto) to priceProsciutto
@@ -73,8 +82,20 @@ class MainActivity : AppCompatActivity() {
         if (binding.cbPeppers.isChecked) items.add(getString(R.string.extra_peppers) to pricePeppers)
         if (binding.cbHam.isChecked) items.add(getString(R.string.extra_ham) to priceHam)
 
-        val lines = items.map { (name, price) -> getString(R.string.summary_line, name, price) }
-        val total = items.sumOf { it.second }
-        binding.tvSummary.text = (lines + getString(R.string.summary_total, total)).joinToString("\n")
+        items.forEach { (name, price) -> orderLines.add(getString(R.string.summary_line, name, price)) }
+        orderTotal += items.sumOf { it.second }
+        binding.tvSummary.text = (orderLines + getString(R.string.summary_total, orderTotal)).joinToString("\n")
+    }
+
+    // Smaže souhrn a vrátí formulář do výchozího stavu
+    private fun resetOrder() {
+        orderLines.clear()
+        orderTotal = 0
+        binding.tvSummary.setText(R.string.summary_empty)
+        binding.rgPizza.check(R.id.rbMargherita)
+        binding.cbCheese.isChecked = false
+        binding.cbOlives.isChecked = false
+        binding.cbPeppers.isChecked = false
+        binding.cbHam.isChecked = false
     }
 }

@@ -18,4 +18,7 @@
     <string name="summary_empty">Nothing has been ordered yet.</string>
     <string name="summary_line">%1$s – %2$d CZK</string>
     <string name="summary_total">Total: %1$d CZK</string>
+    <string name="btn_add_to_order">Add to order</string>
+    <string name="btn_reset">Reset</string>
+    <string name="order_confirmed">Order placed</string>
 </resources>

@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="button_reset">#D32F2F</color>
+    <color name="button_order">#2E7D32</color>
 </resources>
