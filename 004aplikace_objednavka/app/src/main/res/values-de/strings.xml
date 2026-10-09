@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Pizza-Bestellung</string>
+    <string name="title">Bestelle deine Pizza</string>
+    <string name="pizza_image_description">Vorschau der ausgewählten Pizza</string>
+    <string name="section_pizza">Pizza auswählen</string>
+    <string name="pizza_margherita">Margherita</string>
+    <string name="pizza_pepperoni">Pepperoni</string>
+    <string name="pizza_prosciutto">Prosciutto</string>
+    <string name="section_extras">Extra Zutaten</string>
+    <string name="extra_cheese">Extra Käse</string>
+    <string name="extra_olives">Extra Oliven</string>
+    <string name="extra_peppers">Extra Peperoni</string>
+    <string name="extra_ham">Extra Schinken</string>
+    <string name="label_pizza_price">%1$s (%2$d CZK)</string>
+    <string name="label_extra_price">%1$s (+%2$d CZK)</string>
+    <string name="btn_order">Bestellen</string>
+    <string name="section_summary">Bestellübersicht</string>
+    <string name="summary_empty">Noch nichts bestellt.</string>
+    <string name="summary_line">%1$s – %2$d CZK</string>
+    <string name="summary_total">Gesamt: %1$d CZK</string>
+</resources>

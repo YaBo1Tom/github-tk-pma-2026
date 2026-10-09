@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Pizza objednávka</string>
+    <string name="title">Objednej si pizzu</string>
+    <string name="pizza_image_description">Náhled vybrané pizzy</string>
+    <string name="section_pizza">Vyber pizzu</string>
+    <string name="pizza_margherita">Margherita</string>
+    <string name="pizza_pepperoni">Pepperoni</string>
+    <string name="pizza_prosciutto">Prosciutto</string>
+    <string name="section_extras">Extra přísady</string>
+    <string name="extra_cheese">Extra sýr</string>
+    <string name="extra_olives">Extra olivy</string>
+    <string name="extra_peppers">Extra feferonky</string>
+    <string name="extra_ham">Extra šunka</string>
+    <string name="label_pizza_price">%1$s (%2$d Kč)</string>
+    <string name="label_extra_price">%1$s (+%2$d Kč)</string>
+    <string name="btn_order">Objednat</string>
+    <string name="section_summary">Souhrn objednávky</string>
+    <string name="summary_empty">Zatím nic nebylo objednáno.</string>
+    <string name="summary_line">%1$s – %2$d Kč</string>
+    <string name="summary_total">Celkem: %1$d Kč</string>
+</resources>
