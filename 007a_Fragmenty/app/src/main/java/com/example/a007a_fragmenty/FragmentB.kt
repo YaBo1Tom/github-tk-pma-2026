@@ -1,0 +1,19 @@
+package com.example.a007a_fragmenty
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+
+class FragmentB : Fragment() {
+
+    // Propojení Kotlin kódu s XML vzhledem fragmentu
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_b, container, false)
+    }
+}
+
