@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/ivPizza"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/step_pizza"
+        android:src="@drawable/pizza_margherita" />
+
+    <RadioGroup
+        android:id="@+id/rgPizza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/rbMargherita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pizza_margherita" />
+
+        <RadioButton
+            android:id="@+id/rbPepperoni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pizza_pepperoni" />
+
+        <RadioButton
+            android:id="@+id/rbProsciutto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pizza_prosciutto" />
+    </RadioGroup>
+</LinearLayout>

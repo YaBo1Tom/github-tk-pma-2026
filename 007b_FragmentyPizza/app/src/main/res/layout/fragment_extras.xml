@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/step_extras"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:id="@+id/cbCheese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/extra_cheese" />
+
+    <CheckBox
+        android:id="@+id/cbOlives"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/extra_olives" />
+
+    <CheckBox
+        android:id="@+id/cbPeppers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/extra_peppers" />
+
+    <CheckBox
+        android:id="@+id/cbHam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/extra_ham" />
+</LinearLayout>

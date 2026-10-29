@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">007b_FragmentyPizza</string>
+    <string name="nav_pizza">Pizza</string>
+    <string name="nav_extras">Přísady</string>
+    <string name="nav_summary">Souhrn</string>
+    <string name="btn_order">Objednat</string>
+    <string name="total_price">Celkem: %1$d Kč</string>
+    <string name="step_pizza">Vyber pizzu</string>
+    <string name="step_extras">Příplatkové přísady</string>
+    <string name="step_summary">Souhrn objednávky</string>
+    <string name="pizza_margherita">Margherita – 139 Kč</string>
+    <string name="pizza_pepperoni">Pepperoni – 159 Kč</string>
+    <string name="pizza_prosciutto">Prosciutto – 159 Kč</string>
+    <string name="extra_cheese">Extra sýr (+10 Kč)</string>
+    <string name="extra_olives">Extra olivy (+10 Kč)</string>
+    <string name="extra_peppers">Extra feferonky (+20 Kč)</string>
+    <string name="extra_ham">Extra šunka (+10 Kč)</string>
+    <string name="summary_pizza">Vybraná pizza: %1$s</string>
+    <string name="summary_extras">Příplatkové přísady:\n%1$s</string>
+    <string name="order_sent">Objednávka odeslána</string>
+</resources>
