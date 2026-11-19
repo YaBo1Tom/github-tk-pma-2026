@@ -44,7 +44,9 @@ class MainActivity : AppCompatActivity() {
         // 1) Adaptér s callbacky pro editaci a mazání
         adapter = NoteAdapter(
             onEditClick = { note ->
-                // editace bude doplněna později
+                val intent = Intent(this, EditNoteActivity::class.java)
+                intent.putExtra("note_id", note.id)
+                startActivity(intent)
             },
             onDeleteClick = { note ->
                 deleteNote(note)
