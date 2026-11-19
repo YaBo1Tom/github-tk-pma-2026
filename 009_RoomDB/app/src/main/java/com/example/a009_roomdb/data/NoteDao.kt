@@ -18,6 +18,17 @@ interface NoteDao {
     @Query("SELECT * FROM note_table ORDER BY id DESC")
     fun getAllNotes(): Flow<List<Note>>
 
+    // SEARCH - vyhledává v názvu nebo obsahu poznámky
+    @Query(
+        """
+        SELECT * FROM note_table
+        WHERE title LIKE '%' || :search || '%'
+           OR content LIKE '%' || :search || '%'
+        ORDER BY id DESC
+        """
+    )
+    fun searchNotes(search: String): Flow<List<Note>>
+
     // UPDATE - aktualizuje existující poznámku
     @Update
     suspend fun update(note: Note)

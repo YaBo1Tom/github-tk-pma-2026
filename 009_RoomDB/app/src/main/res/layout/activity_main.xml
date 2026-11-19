@@ -17,9 +17,20 @@
         android:text="Moje poznámky"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/recyclerViewNotes"
+        app:layout_constraintBottom_toTopOf="@id/searchViewNotes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- SearchView pod nadpisem -->
+    <SearchView
+        android:id="@+id/searchViewNotes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:queryHint="Hledat poznámky..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <!-- RecyclerView pro seznam poznámek -->
     <androidx.recyclerview.widget.RecyclerView
@@ -30,7 +41,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@id/searchViewNotes" />
 
     <!-- FAB pro přidání nové poznámky -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton

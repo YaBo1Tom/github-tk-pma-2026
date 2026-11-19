@@ -20,6 +20,7 @@ class EditNoteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditNoteBinding
     private lateinit var noteDao: NoteDao
     private var noteId: Int = -1
+    private var currentNote: Note? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +43,7 @@ class EditNoteActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val note = noteDao.getAllNotes().first().find { it.id == noteId }
             if (note != null) {
+                currentNote = note
                 binding.etEditTitle.setText(note.title)
                 binding.etEditContent.setText(note.content)
             }
@@ -57,7 +59,9 @@ class EditNoteActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val updatedNote = Note(id = noteId, title = updatedTitle, content = updatedContent)
+            // copy() zachová ostatní atributy (createdAt, category)
+            val original = currentNote ?: return@setOnClickListener
+            val updatedNote = original.copy(title = updatedTitle, content = updatedContent)
 
             lifecycleScope.launch(Dispatchers.IO) {
                 noteDao.update(updatedNote)

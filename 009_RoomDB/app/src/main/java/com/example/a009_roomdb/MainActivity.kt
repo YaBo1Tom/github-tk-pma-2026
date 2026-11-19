@@ -2,6 +2,7 @@ package com.example.a009_roomdb
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -13,6 +14,7 @@ import com.example.a009_roomdb.data.NoteDao
 import com.example.a009_roomdb.data.NoteHubDatabaseInstance
 import com.example.a009_roomdb.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -60,10 +62,22 @@ class MainActivity : AppCompatActivity() {
         // 3) DAO
         noteDao = NoteHubDatabaseInstance.getDatabase(applicationContext).noteDao()
 
-        // 4) Pozorování Flow z Room – korutina je vázaná na životní cyklus aktivity
+        // 4) Vyhledávání: změna textu v SearchView změní hodnotu Flow
+        val searchQuery = MutableStateFlow("")
+        binding.searchViewNotes.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean = false
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                searchQuery.value = newText ?: ""
+                return true
+            }
+        })
+
+        // 5) Jeden collector reagující na změnu textu; korutina je vázaná na životní cyklus aktivity
         lifecycleScope.launch {
-            noteDao.getAllNotes().collectLatest { notes ->
-                adapter.submitList(notes)
+            searchQuery.collectLatest { text ->
+                val notesFlow = if (text.isEmpty()) noteDao.getAllNotes() else noteDao.searchNotes(text)
+                notesFlow.collectLatest { notes -> adapter.submitList(notes) }
             }
         }
     }
