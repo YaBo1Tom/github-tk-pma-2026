@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.a009_roomdb.data.Note
 import com.example.a009_roomdb.databinding.ItemNoteBinding
 
-class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteAdapter(
+    private val onEditClick: (Note) -> Unit,
+    private val onDeleteClick: (Note) -> Unit
+) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     // Seznam poznámek, které se mají zobrazit
     private var notes: List<Note> = emptyList()
@@ -28,6 +31,10 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         val currentNote = notes[position]
         holder.binding.tvNoteTitle.text = currentNote.title
         holder.binding.tvNoteContent.text = currentNote.content
+
+        // Kliknutí na ikonu EDIT / DELETE předáme ven (řeší MainActivity)
+        holder.binding.ivEdit.setOnClickListener { onEditClick(currentNote) }
+        holder.binding.ivDelete.setOnClickListener { onDeleteClick(currentNote) }
     }
 
     // Počet poznámek → RecyclerView ví, kolik řádků vykreslit
